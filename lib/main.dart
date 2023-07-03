@@ -17,7 +17,7 @@ class dawaApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashScreen(title: 'Nuevo Musulmán'),
+      home: const SplashScreen(title: 'El mensaje eterno'),
     );
   }
 }
