@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nuevo_musulman/screens/non_moslem.dart';
 
 class route_screen extends StatelessWidget {
    route_screen({super.key});
@@ -16,7 +17,11 @@ class route_screen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ElevatedButton(onPressed: (){},
+                ElevatedButton(onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => non_moslem()));
+
+                },
                     child: Text('encuentra la verdad')),
                 Expanded(child: Image.asset('assets/images/fa_man_yashrah.jpg')),
                 SizedBox(height: 20,),
