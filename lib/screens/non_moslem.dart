@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 import 'package:nuevo_musulman/data/new_dawa.dart';
 
 var data;
@@ -37,7 +38,8 @@ class _non_moslemState extends State<non_moslem> {
       mydataList.add(getdata);
     });
 
-
+    // var registry = JsonWidgetRegistry.instance;
+    // registry.setValue('key', 'value');
     print('/////////');
     //print(getdata.topics.toString());
 
