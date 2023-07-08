@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 import 'package:nuevo_musulman/data/new_dawa.dart';
 
+import 'SimpleTreeView.dart';
+
 var data;
 var jsonResult;
 List<mydata> mydataList=<mydata>[];
@@ -50,26 +52,29 @@ class _non_moslemState extends State<non_moslem> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('hello'),
+        title: Text('Aprende sobre el Islam'),
       ),
       body: Center(
-        child: Column(children: [
-          ElevatedButton(
-            onPressed: () async {
-              await mymethod();
-              //print(jsonResult[1]);
-            },
-            child: Text('Print'),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('Go back'))
-        ]),
+        child: SimpleTreeView()
+        // Column(children: [
+        //   ElevatedButton(
+        //     onPressed: () async {
+        //       await mymethod();
+        //       //print(jsonResult[1]);
+        //     },
+        //     child: Text('Print'),
+        //   ),
+        //   SizedBox(
+        //     height: 20,
+        //   ),
+        //   ElevatedButton(
+        //       onPressed: () {
+        //         Navigator.pop(context);
+        //       },
+        //       child: Text('Go back')),
+        //   SizedBox(height: 10,),
+        //   SimpleTreeView()
+        // ]),
       ),
     );
   }
