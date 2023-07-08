@@ -6,9 +6,7 @@ import 'package:nuevo_musulman/data/new_dawa.dart';
 
 import 'SimpleTreeView.dart';
 
-var data;
-var jsonResult;
-List<mydata> mydataList=<mydata>[];
+
 
 class non_moslem extends StatefulWidget {
   const non_moslem({super.key});
@@ -18,35 +16,33 @@ class non_moslem extends StatefulWidget {
 }
 
 class _non_moslemState extends State<non_moslem> {
+
+
   @override
   void initState() {
     // TODO: implement initState
-    // mymethod().then((result) {
-    //   print("result: $result");
-    //   setState(() {});
-    // });
+
+
+    // mydataList.clear();
+    // nodes.clear();
+      if(nodes.isEmpty){
+    mymethod().then((result) {
+      print("result: $result");
+      setState(() {});
+    });}
 
     super.initState();
   }
 
-  Future<dynamic> mymethod() async {
-    data = await DefaultAssetBundle.of(context)
-        .loadString("assets/text/Newdawafinal.json");
 
-    jsonResult = await jsonDecode(data); //latest Dart
-    print(jsonResult.length);
-    jsonResult.forEach((v) async{
-      mydata getdata=await mydata.fromJson(jsonResult[0]);
-      mydataList.add(getdata);
-    });
 
     // var registry = JsonWidgetRegistry.instance;
     // registry.setValue('key', 'value');
-    print('/////////');
+   // print('/////////');
     //print(getdata.topics.toString());
 
    // print(getdata.sectionName);
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -78,4 +74,21 @@ class _non_moslemState extends State<non_moslem> {
       ),
     );
   }
-}
+
+Future<dynamic> mymethod() async {
+  data = await DefaultAssetBundle.of(context)
+      .loadString("assets/text/Newdawafinal.json");
+
+  jsonResult = await jsonDecode(data); //latest Dart
+  print(jsonResult.length);
+  jsonResult.forEach((v) async{
+    //mydataList.add(v);
+    mydata getdata=await mydata.fromJson(v);
+    mydataList.add(getdata);
+
+  });
+
+}}
+
+
+

@@ -20,23 +20,12 @@ class SimpleTreeView extends StatefulWidget {
 class _SimpleTreeViewState extends State<SimpleTreeView> {
   var selkey='docs';
 
-  var data;
-  var jsonResult;
+  // var data;
+  // var jsonResult;
+  //
+  // List<mydata> mydataList=<mydata>[];
+  //
 
-  List<mydata> mydataList=<mydata>[];
-
-  Future<dynamic> mymethod() async {
-    data = await DefaultAssetBundle.of(context)
-        .loadString("assets/text/Newdawafinal.json");
-
-    jsonResult = await jsonDecode(data); //latest Dart
-    print(jsonResult.length);
-    jsonResult.forEach((v) async{
-      //mydataList.add(v);
-      mydata getdata=await mydata.fromJson(v);
-      mydataList.add(getdata);
-
-    });}
 
 
 
@@ -56,10 +45,10 @@ class _SimpleTreeViewState extends State<SimpleTreeView> {
   //       ]
   //
   // ));
-      mymethod().then((value) {
-        print(value);
-        return null;
-      });
+  //     mymethod().then((value) {
+  //       print(value);
+  //       return null;
+  //     });
     super.initState();
   }
 

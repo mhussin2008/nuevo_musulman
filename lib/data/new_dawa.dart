@@ -1,4 +1,9 @@
 import 'package:flutter_treeview/flutter_treeview.dart';
+
+var data;
+var jsonResult;
+List<mydata> mydataList=<mydata>[];
+
 List<Node> nodes=<Node>[];
 
 class mydata {
