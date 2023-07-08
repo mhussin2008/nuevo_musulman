@@ -5,6 +5,7 @@ import 'package:nuevo_musulman/data/new_dawa.dart';
 
 var data;
 var jsonResult;
+List<mydata> mydataList=<mydata>[];
 
 class non_moslem extends StatefulWidget {
   const non_moslem({super.key});
@@ -30,9 +31,15 @@ class _non_moslemState extends State<non_moslem> {
         .loadString("assets/text/Newdawafinal.json");
 
     jsonResult = await jsonDecode(data); //latest Dart
-    mydata getdata=await mydata.fromJson(jsonResult[0]);
+    print(jsonResult.length);
+    jsonResult.forEach((v) async{
+      mydata getdata=await mydata.fromJson(jsonResult[0]);
+      mydataList.add(getdata);
+    });
 
-    print(getdata.topics.toString());
+
+    print('/////////');
+    //print(getdata.topics.toString());
 
    // print(getdata.sectionName);
   }

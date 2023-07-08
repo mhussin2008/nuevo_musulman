@@ -11,7 +11,9 @@ class mydata {
     if (json['topics'] != null) {
       topics = <Topics>[];
       json['topics'].forEach((v) {
-        topics!.add(new Topics.fromJson(v));
+        print('high loop');
+        topics!.add(Topics.fromJson(v));
+        print('hello there');
       });
     }
   }
@@ -21,8 +23,12 @@ class mydata {
     data['sectionName'] = this.sectionName;
     data['sectionType'] = this.sectionType;
     if (this.topics != null) {
-      data['topics'] = this.topics!.map((v) => v.toJson()).toList();
-    }
+      data['topics'] = this.topics!.map((v) {
+        print('lower loop');
+        return v.toJson();
+      }).toList();
+    }else {
+      print('lower loop null');}
     return data;
   }
 }
@@ -35,12 +41,17 @@ class Topics {
 
   Topics.fromJson(Map<String, dynamic> json) {
     header = json['header'];
+    print('header');
     if (json['nestedTopics'] != null) {
+      print('nested topics start');
+      print(json['nestedTopics']);
+
       nestedTopics = <NestedTopics>[];
       json['nestedTopics'].forEach((v) {
-        nestedTopics!.add(new NestedTopics.fromJson(v));
+        print('from inside');
+        nestedTopics!.add(NestedTopics.fromJson(v));
       });
-    }
+    }else{print('null nestedTopics');}
   }
 
   Map<String, dynamic> toJson() {
@@ -57,7 +68,7 @@ class NestedTopics {
   String? title;
   String? body;
   String? header;
-  List<NestedTopics>? nestedTopics;
+  List<NestedTopics2>? nestedTopics;
 
   NestedTopics({this.title, this.body, this.header, this.nestedTopics});
 
@@ -66,9 +77,9 @@ class NestedTopics {
     body = json['body'];
     header = json['header'];
     if (json['nestedTopics'] != null) {
-      nestedTopics = <NestedTopics>[];
+      nestedTopics = <NestedTopics2>[];
       json['nestedTopics'].forEach((v) {
-        nestedTopics!.add(new NestedTopics.fromJson(v));
+        nestedTopics!.add( NestedTopics2.fromJson(v));
       });
     }
   }
@@ -92,6 +103,7 @@ class NestedTopics2 {
   NestedTopics2({this.title, this.body});
 
   NestedTopics2.fromJson(Map<String, dynamic> json) {
+    print('final ok');
     title = json['title'];
     body = json['body'];
   }
