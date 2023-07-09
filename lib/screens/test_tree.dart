@@ -21,9 +21,14 @@ class _test_treeState extends State<test_tree> {
     // TODO: implement initState
     if(mytreenodes.isEmpty){
       print('inialize');
-      buildTree().then((value) => print('ok'));
+      buildTree().then((value) {
+        print('ok');
         setState(() {
         });
+
+      }
+       );
+
   }
     super.initState();
   }
@@ -31,8 +36,7 @@ class _test_treeState extends State<test_tree> {
   @override
   Widget build(BuildContext context) {
     TreeViewController myTVC = TreeViewController(
-      selectedKey: 'Header'
-                  ,
+      selectedKey: 'Header',
        children:  mytreenodes
     );
 
@@ -47,24 +51,27 @@ class _test_treeState extends State<test_tree> {
     );
   }
 
-  Future<dynamic> newmethod() async {
-    data = await DefaultAssetBundle.of(context)
-        .loadString("assets/text/Newdawafinal.json");
-
-    jsonResult = await json.decode(data);
-    return jsonResult;
-  }
+  // Future<dynamic> newmethod() async {
+  //   data = await DefaultAssetBundle.of(context)
+  //       .loadString("assets/text/Newdawafinal.json");
+  //
+  //   jsonResult = await json.decode(data);
+  //   return jsonResult;
+  // }
 
   Future<List<Node>> buildTree() async {
     try {
-      final dynamic parsedJson =  await newmethod(); ////json.decode(_textController.text);
+      data = await DefaultAssetBundle.of(context)
+          .loadString("assets/text/Newdawafinal.json");
+
+      final dynamic parsedJson = await json.decode(data);
+
       print(parsedJson);
       mytreenodes.addAll(toTreeNodes(parsedJson));
       //customNodes.addAll(iterable)
-      return
-          mytreenodes  ;
+      return mytreenodes  ;
     } on FormatException catch (e) {
-      return [Node(key: '',label: 'error')];
+      return [Node(key: '$e',label: 'error $e')];
     }
   }
 
