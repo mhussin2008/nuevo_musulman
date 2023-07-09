@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_treeview/flutter_treeview.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 import 'package:nuevo_musulman/data/new_dawa.dart';
 
+import '../data/Tree_NewDawa.dart';
 import 'SimpleTreeView.dart';
 
 
@@ -25,11 +27,11 @@ class _non_moslemState extends State<non_moslem> {
 
     // mydataList.clear();
     // nodes.clear();
-      if(nodes.isEmpty){
-    mymethod().then((result) {
-      print("result: $result");
-      setState(() {});
-    });}
+    //   if(nodes.isEmpty){
+    // mymethod().then((result) {
+    //   print("result: $result");
+    //   setState(() {});
+    // });}
 
     super.initState();
   }
@@ -51,7 +53,11 @@ class _non_moslemState extends State<non_moslem> {
         title: Text('Aprende sobre el Islam'),
       ),
       body: Center(
-        child: SimpleTreeView()
+        child: TreeView(controller: TreeViewController(
+          children: myNodesList
+        ),
+
+        )
         // Column(children: [
         //   ElevatedButton(
         //     onPressed: () async {

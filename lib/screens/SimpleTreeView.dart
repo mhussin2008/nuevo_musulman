@@ -20,37 +20,6 @@ class SimpleTreeView extends StatefulWidget {
 class _SimpleTreeViewState extends State<SimpleTreeView> {
   var selkey='docs';
 
-  // var data;
-  // var jsonResult;
-  //
-  // List<mydata> mydataList=<mydata>[];
-  //
-
-
-
-
-
-  void initState() {
-    // TODO: implement initState
-  // nodes.add(
-  //     Node(
-  //   label: 'documents',
-  //   key: 'docs',
-  //   expanded: true,
-  //   icon: Icons.folder_open ,
-  //       children: [
-  //         Node(key: 'FirstDoc', label: 'FirstDocLabel',expanded: true,children: [
-  //           Node(key: 'Second Doc', label: 'Second Doc Label')
-  //         ])
-  //       ]
-  //
-  // ));
-  //     mymethod().then((value) {
-  //       print(value);
-  //       return null;
-  //     });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

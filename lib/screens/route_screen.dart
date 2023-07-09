@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nuevo_musulman/screens/non_moslem.dart';
+import 'package:nuevo_musulman/screens/test_tree.dart';
 
 class route_screen extends StatelessWidget {
    route_screen({super.key});
@@ -25,7 +26,12 @@ class route_screen extends StatelessWidget {
                     child: Text('encuentra la verdad')),
                 Expanded(child: Image.asset('assets/images/fa_man_yashrah.jpg')),
                 SizedBox(height: 20,),
-                ElevatedButton(onPressed: (){},
+                ElevatedButton(onPressed: (){
+
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => test_tree()));
+
+                },
                     child: Text('Nuevo musulmán')),
                 Expanded(child: Image.asset('assets/images/alhamdo_lellah.jpg')),
                 SizedBox(height: 20,)
