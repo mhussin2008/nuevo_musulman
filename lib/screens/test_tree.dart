@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_treeview/flutter_treeview.dart';
-
 import '../data/new_dawa.dart';
 
 List<Node> mytreenodes=<Node>[];
@@ -16,23 +14,6 @@ class test_tree extends StatefulWidget {
 
 class _test_treeState extends State<test_tree> {
 
-    @override
-  void initState() {
-    // TODO: implement initState
-    if(mytreenodes.isEmpty){
-      print('inialize');
-      buildTree().then((value) {
-        print('ok');
-        setState(() {
-        });
-
-      }
-       );
-
-  }
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     TreeViewController myTVC = TreeViewController(
@@ -40,26 +21,32 @@ class _test_treeState extends State<test_tree> {
        children:  mytreenodes
     );
 
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
         title: Text('Aprende sobre el Islam'),
       ),
-      body: Center(
-          child: TreeView(controller: myTVC,
-            )
-      ),
-    );
-  }
+      body: FutureBuilder(
+        future: buildTree(),
+        //initialData: ,
+        builder:(context,snapshot){
+          return Center(
+              child: mytreenodes.isNotEmpty? TreeView(controller: myTVC,
+              ):Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: Colors.cyan,
+              )
+          );
 
-  // Future<dynamic> newmethod() async {
-  //   data = await DefaultAssetBundle.of(context)
-  //       .loadString("assets/text/Newdawafinal.json");
-  //
-  //   jsonResult = await json.decode(data);
-  //   return jsonResult;
-  // }
+        } ));
+       }
+
+
+
+
 
   Future<List<Node>> buildTree() async {
+    if(mytreenodes.isNotEmpty){return <Node>[];}
     try {
       data = await DefaultAssetBundle.of(context)
           .loadString("assets/text/Newdawafinal.json");

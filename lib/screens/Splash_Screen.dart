@@ -12,12 +12,20 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  late Timer Splash_Timer;
+
+@override
+void dispose() {
+  Splash_Timer.cancel();
+  // TODO: implement dispose
+    super.dispose();
+  }
 
 
   @override
   Widget build(BuildContext context) {
 
-    Timer(
+    Splash_Timer=  Timer(
         Duration(seconds: 3),
             () =>
             Navigator.of(context).pushReplacement(MaterialPageRoute(
