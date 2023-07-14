@@ -48,7 +48,7 @@ class _test_treeState extends State<test_tree> {
   Future<List<Node>> buildTree() async {
     if(mytreenodes.isNotEmpty){return <Node>[];}
     try {
-      data = await DefaultAssetBundle.of(context)
+      var data = await DefaultAssetBundle.of(context)
           .loadString("assets/text/Newdawafinal.json");
 
       final dynamic parsedJson = await json.decode(data);

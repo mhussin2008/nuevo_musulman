@@ -25,7 +25,7 @@ class _SimpleTreeViewState extends State<SimpleTreeView> {
   Widget build(BuildContext context) {
 
     TreeViewController TVC=TreeViewController(
-      children: nodes,
+      //children: nodes,
       selectedKey: selkey
     );
     return
